@@ -1,0 +1,63 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+#left {
+  float: left;
+  height: 100vh;
+  width: 50vw;
+  background-color: darkslateblue;
+  color: whitesmoke;
+}
+
+#right {
+  float: left;
+  height: 100vh;
+  width: 50vw;
+  background-color: whitesmoke;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+#right h3 {
+  padding-top: 20px;
+  font-size: x-large;
+  font-family: "Pacifico", cursive;
+  font-weight: normal;
+  color: darkslateblue;
+}
+
+#right ul li {
+  font-family: "Pacifico", cursive;
+  list-style-type: none;
+  font-size: x-large;
+}
+
+#imgProfile {
+  display: block;
+  width: 300px;
+  margin: 50px auto 50px auto;
+  border-radius: 50%;
+}
+
+.cv {
+  width: 100vw;
+  height: 100vh;
+}
+
+.personalInfo table {
+  margin: 0px auto;
+}
+
+.personalInfo td {
+  font-family: "Lobster", cursive;
+  line-height: 2em;
+  font-size: x-large;
+  padding-right: 20px;
+}

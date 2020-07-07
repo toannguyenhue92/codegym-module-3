@@ -1,0 +1,36 @@
+#head {
+  height: 100px;
+  background-color: chocolate;
+}
+
+#head-link {
+  height: 50px;
+  background-color: cyan;
+}
+
+#left {
+  float: left;
+  width: 20%;
+  height: 300px;
+  background-color: darkorchid;
+}
+
+#content {
+  float: left;
+  width: 60%;
+  height: 300px;
+  background-color: antiquewhite;
+}
+
+#right {
+  float: left;
+  width: 20%;
+  height: 300px;
+  background-color: chartreuse;
+}
+
+#footer {
+  clear: both;
+  height: 50px;
+  background-color: dimgrey;
+}
