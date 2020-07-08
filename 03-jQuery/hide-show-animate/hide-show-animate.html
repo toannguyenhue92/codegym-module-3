@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#hide").click(function () {
+        $("p").hide();
+      });
+      $("#show").click(function () {
+        $("p").show();
+      });
+      $("#animate").click(function () {
+        var div = $("div");
+        div.animate({ left: '100px' }, "slow");
+        div.animate({ fontSize: '100px' }, "slow");
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <p>If you click on the "Hide" button, I will disappear.</p>
+  <div style="background:#98bf21;height:100px;width:200px;position:relative;">HELLO</div>
+  <button id="hide">Hide</button>
+  <button id="show">Show</button>
+  <button id="animate">Start Animation</button>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <style>
+    #draggable {
+      display: block;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+    }
+
+    #content {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #content img {
+      height: 100%;
+      border-radius: 50%;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $("#draggable").draggable();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="draggable">
+    <div id="content"><img src="images/pikachu1.jpg" alt="pikachu"></div>
+  </div>
+</body>
+
+</html>
