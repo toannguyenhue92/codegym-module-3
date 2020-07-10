@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryUI</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <a href="https://jqueryui.com/draggable/">Draggable</a>
+    <div class="row">
+      <div class="col-lg-7">
+        <!-- HTML generated using hilite.me -->
+        <div
+          style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+          <pre style="margin: 0; line-height: 125%"><span style="color: #8f5902; font-style: italic">&lt;!doctype html&gt;</span>
+<span style="color: #204a87; font-weight: bold">&lt;html</span> <span style="color: #c4a000">lang=</span><span style="color: #4e9a06">&quot;en&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+
+<span style="color: #204a87; font-weight: bold">&lt;head&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;meta</span> <span style="color: #c4a000">charset=</span><span style="color: #4e9a06">&quot;utf-8&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;meta</span> <span style="color: #c4a000">name=</span><span style="color: #4e9a06">&quot;viewport&quot;</span> <span style="color: #c4a000">content=</span><span style="color: #4e9a06">&quot;width=device-width, initial-scale=1&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;title&gt;</span>jQuery UI Draggable - Default functionality<span style="color: #204a87; font-weight: bold">&lt;/title&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;link</span> <span style="color: #c4a000">rel=</span><span style="color: #4e9a06">&quot;stylesheet&quot;</span> <span style="color: #c4a000">href=</span><span style="color: #4e9a06">&quot;css/draggable.css&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+<span style="color: #204a87; font-weight: bold">&lt;/head&gt;</span>
+
+<span style="color: #204a87; font-weight: bold">&lt;body&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;div</span> <span style="color: #c4a000">class=</span><span style="color: #4e9a06">&quot;message&quot;</span> <span style="color: #c4a000">id=</span><span style="color: #4e9a06">&quot;position&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>CSS position:<span style="color: #204a87; font-weight: bold">&lt;/div&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;div</span> <span style="color: #c4a000">class=</span><span style="color: #4e9a06">&quot;message&quot;</span> <span style="color: #c4a000">id=</span><span style="color: #4e9a06">&quot;offset&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>Offset position:<span style="color: #204a87; font-weight: bold">&lt;/div&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;div</span> <span style="color: #c4a000">id=</span><span style="color: #4e9a06">&quot;draggable&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+    <span style="color: #204a87; font-weight: bold">&lt;div</span> <span style="color: #c4a000">id=</span><span style="color: #4e9a06">&quot;content&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+      <span style="color: #204a87; font-weight: bold">&lt;img</span> <span style="color: #c4a000">src=</span><span style="color: #4e9a06">&quot;images/pikachu.jpg&quot;</span> <span style="color: #c4a000">alt=</span><span style="color: #4e9a06">&quot;pikachu&quot;</span><span style="color: #204a87; font-weight: bold">&gt;</span>
+    <span style="color: #204a87; font-weight: bold">&lt;/div&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;/div&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;script </span><span style="color: #c4a000">src=</span><span style="color: #4e9a06">&quot;https://code.jquery.com/jquery-1.12.4.js&quot;</span><span style="color: #204a87; font-weight: bold">&gt;&lt;/script&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;script </span><span style="color: #c4a000">src=</span><span style="color: #4e9a06">&quot;https://code.jquery.com/ui/1.12.1/jquery-ui.js&quot;</span><span style="color: #204a87; font-weight: bold">&gt;&lt;/script&gt;</span>
+  <span style="color: #204a87; font-weight: bold">&lt;script&gt;</span>
+    <span style="color: #000000">$</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">document</span><span style="color: #000000; font-weight: bold">).</span><span style="color: #000000">ready</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">function</span> <span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+      <span style="color: #204a87; font-weight: bold">let</span> <span style="color: #000000">position</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">$</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;#position&quot;</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #204a87; font-weight: bold">let</span> <span style="color: #000000">offset</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">$</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;#offset&quot;</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #204a87; font-weight: bold">let</span> <span style="color: #000000">draggable</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">$</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;#draggable&quot;</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #000000">draggable</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">draggable</span><span style="color: #000000; font-weight: bold">({</span>
+        <span style="color: #000000">drag</span><span style="color: #ce5c00; font-weight: bold">:</span> <span style="color: #204a87; font-weight: bold">function</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">event</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">ui</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">{</span>
+          <span style="color: #000000">position</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">html</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;CSS position: &quot;</span> <span style="color: #ce5c00; font-weight: bold">+</span> <span style="color: #000000">JSON</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">stringify</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">ui</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">position</span><span style="color: #000000; font-weight: bold">));</span>
+          <span style="color: #000000">offset</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">html</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Offset position: &quot;</span> <span style="color: #ce5c00; font-weight: bold">+</span> <span style="color: #000000">JSON</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">stringify</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">ui</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">offset</span><span style="color: #000000; font-weight: bold">));</span>
+        <span style="color: #000000; font-weight: bold">}</span>
+      <span style="color: #000000; font-weight: bold">})</span>
+    <span style="color: #000000; font-weight: bold">});</span>
+  <span style="color: #204a87; font-weight: bold">&lt;/script&gt;</span>
+<span style="color: #204a87; font-weight: bold">&lt;/body&gt;</span>
+
+<span style="color: #204a87; font-weight: bold">&lt;/html&gt;</span>
+</pre>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <iframe class="demo-frame" src="draggable.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

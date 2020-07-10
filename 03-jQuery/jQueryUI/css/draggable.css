@@ -1,0 +1,24 @@
+#draggable {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+#content {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#content img {
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.message {
+  font-size: 20px;
+  line-height: 30px;
+  height: 30px;
+  font-family: sans-serif;
+}

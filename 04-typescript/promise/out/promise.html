@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+  <style>
+    body {
+      padding: 5px;
+      background-color: whitesmoke;
+    }
+
+    .search-box {
+      padding-bottom: 5px;
+    }
+
+    #message {
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      border: 1px solid gray;
+    }
+
+    th {
+      padding: 5px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: whitesmoke;
+      border: 1px solid gray;
+    }
+
+    td {
+      padding: 5px;
+      text-align: left;
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search-box">
+    <input type="text" name="search" id="search" value="angular">
+    <button id="find">Find</button>
+    <p id="message" hidden></p>
+  </div>
+  <div id="result-table"></div>
+  <script src="promise.js"></script>
+</body>
+
+</html>

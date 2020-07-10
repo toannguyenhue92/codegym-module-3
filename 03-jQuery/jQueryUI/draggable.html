@@ -5,39 +5,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Draggable - Default functionality</title>
-  <style>
-    #draggable {
-      display: block;
-      width: 150px;
-      height: 150px;
-      text-align: center;
-    }
-
-    #content {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #content img {
-      height: 100%;
-      border-radius: 50%;
-    }
-  </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-    $(function () {
-      $("#draggable").draggable();
-    });
-  </script>
+  <link rel="stylesheet" href="css/draggable.css">
 </head>
 
 <body>
+  <div class="message" id="position">CSS position:</div>
+  <div class="message" id="offset">Offset position:</div>
   <div id="draggable">
-    <div id="content"><img src="images/pikachu1.jpg" alt="pikachu"></div>
+    <div id="content">
+      <img src="images/pikachu.jpg" alt="pikachu">
+    </div>
   </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function () {
+      let position = $("#position");
+      let offset = $("#offset");
+      let draggable = $("#draggable");
+      draggable.draggable({
+        drag: function (event, ui) {
+          position.html("CSS position: " + JSON.stringify(ui.position));
+          offset.html("Offset position: " + JSON.stringify(ui.offset));
+        }
+      })
+    });
+  </script>
 </body>
 
 </html>
