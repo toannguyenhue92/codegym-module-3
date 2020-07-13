@@ -16,15 +16,15 @@ export class RatingBarComponent implements OnInit {
   max = 10;
 
   @Output()
-  ratingChange = new EventEmitter();
+  ratingChange = new EventEmitter<number>();
 
-  ratingUnits: Array<IRatingUnit> = [];
+  ratingUnits = new Array<IRatingUnit>();
 
   constructor() { }
 
   ngOnInit() {
-    for (let index = 0; index < this.max; index++) {
-      this.ratingUnits.push({ value: index + 1, active: false });
+    for (let i = 0; i < this.max; i++) {
+      this.ratingUnits.push({ value: i + 1, active: false });
     }
   }
 
