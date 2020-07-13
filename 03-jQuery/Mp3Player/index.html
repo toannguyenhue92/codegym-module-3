@@ -24,7 +24,7 @@
                 const element = $track[index];
                 let title = element.children[0].innerHTML.toString().trim().substring(9);
                 title = title.substring(0, title.length - 3);
-                let file = element.children[3].innerHTML.match(regex)[0]
+                let file = element.children[3].innerHTML.match(regex)[0];
                 let song = { title, file };
                 playlist.push(song);
             }
