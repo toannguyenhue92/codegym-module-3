@@ -1,0 +1,16 @@
+<div class="col-md-8 offset-md-2">
+  <h2>
+    Todo App
+  </h2>
+  <div class="form-inline">
+    <input class="form-control" #newTodo type="text" placeholder="Enter todo here">
+    <button type="submit" class="btn btn-primary" (click)="addNewTodo(newTodo.value)"
+      style="margin-left: 5px;">Add</button>
+  </div>
+
+  <ul>
+    <li (click)="toggleTodo(todo.id)" [class.complete]="todo.complete" *ngFor="let todo of todos; index as i">
+      {{todo.content}}
+    </li>
+  </ul>
+</div>
