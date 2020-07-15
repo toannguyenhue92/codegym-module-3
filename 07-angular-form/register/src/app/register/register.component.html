@@ -1,0 +1,30 @@
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1>Create a new account</h1>
+    <p>It's quick and easy.</p>
+  </div>
+</div>
+<form class="col-md-6 offset-md-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" placeholder="Enter email" id="email" formControlName="email">
+  </div>
+  <div class="alert alert-danger" role="alert"
+    *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">Invalid email!</div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" placeholder="Enter password" id="password" formControlName="password">
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Confirm password:</label>
+    <input type="password" class="form-control" placeholder="Enter confirm password" id="confirmPassword"
+      formControlName="confirmPassword">
+  </div>
+  <div class="alert alert-danger" role="alert"
+    *ngIf="registerForm.hasError('passwordNotMatch') && registerForm.get('confirmPassword').touched">
+    Password does not match!
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>
