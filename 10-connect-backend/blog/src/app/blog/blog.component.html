@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let post of postList; index as i">
+    <h3>
+      <a [routerLink]="['/blog', post.id]">
+        Post Id: {{post.id}} - {{post.title}}
+      </a>
+    </h3>
+    <a [routerLink]="['/blog', post.id, 'edit']">Edit</a>
+  </li>
+</ul>
