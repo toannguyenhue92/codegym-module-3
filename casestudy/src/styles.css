@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
+body {
+  background-color: whitesmoke;
+}
+
 .my-form {
   max-width: 600px;
   margin: 0 auto;

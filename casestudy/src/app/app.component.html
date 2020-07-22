@@ -1,45 +1,23 @@
-<div class="container-fluid px-0" style="height: 100vh; background-color: whitesmoke;">
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height: 10%;">
-    <a class="navbar-brand" href="#">Furama Đà Nẵng</a>
+<div class="container-fluid px-0">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand">Furama Đà Nẵng</a>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Trang chủ</a>
+        <a class="nav-link" routerLink="/customer"><i class="fas fa-address-card pr-1"></i>Customer</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Liên hệ</a>
+        <a class="nav-link" routerLink="/staff"><i class="fas fa-users pr-1"></i>Staff</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/stay"><i class="fas fa-bookmark pr-1"></i>Stay</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contract"><i class="fas fa-file-signature pr-1"></i>Contract</a>
       </li>
     </ul>
   </nav>
-  <div class="row px-0 mx-0" style="height: 90%; padding-top: 15px;">
-    <div class="col-2">
-      <div class="list-group">
-        <a routerLink="/customer" class="list-group-item list-group-item-action">
-          <i class="fas fa-address-card icon-center"></i>Customer
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <i class="fas fa-users icon-center"></i>Staff
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <i class="fas fa-bookmark icon-center"></i>Stay
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <i class="fas fa-file-signature icon-center"></i>Contract
-        </a>
-        <a routerLink="/customer/create" class="list-group-item list-group-item-action">
-          Add new customer
-        </a>
-        <a routerLink="/staff/create" class="list-group-item list-group-item-action">
-          Add new staff
-        </a>
-        <a routerLink="/stay/create" class="list-group-item list-group-item-action">
-          Add new stay
-        </a>
-        <a routerLink="/contract/create" class="list-group-item list-group-item-action">
-          Add new contract
-        </a>
-      </div>
-    </div>
-    <div class="col-10">
+  <div class="row px-0 pt-3 mx-0">
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
   </div>
