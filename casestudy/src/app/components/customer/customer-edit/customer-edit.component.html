@@ -1,8 +1,8 @@
 <div class="my-form">
   <div class="d-flex justify-content-center">
-    <h3 class="text-info mb-3">CREATE NEW CUSTOMER</h3>
+    <h3 class="text-info mb-3">EDIT CUSTOMER</h3>
   </div>
-  <form [formGroup]="customerCreateForm">
+  <form [formGroup]="customerEditForm" (ngSubmit)="updateCustomer()">
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Customer code</label>
       <div class="col-sm-8">
@@ -104,8 +104,7 @@
     <div class="form-group row">
       <label class="col-sm-4 col-form-label"></label>
       <div class="col-sm-8">
-        <input type="submit" class="btn btn-primary" value="Submit" (click)="createNewCustomer()"
-          [disabled]="customerCreateForm.invalid">
+        <input type="submit" class="btn btn-primary" value="Update">
       </div>
     </div>
   </form>

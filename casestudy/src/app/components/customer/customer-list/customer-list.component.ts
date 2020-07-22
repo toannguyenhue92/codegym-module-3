@@ -12,8 +12,10 @@ export class CustomerListComponent implements OnInit {
   customerList: Array<ICustomer>;
   term: string;
   p: number;
+  deletedCustomer: ICustomer;
 
-  constructor(private customerService: CustomerService) {
+  constructor(
+    private customerService: CustomerService) {
     this.p = 1;
     this.customerList = new Array<ICustomer>();
   }
@@ -22,5 +24,26 @@ export class CustomerListComponent implements OnInit {
     this.customerService.getAllCustomers().subscribe(value => {
       this.customerList = value;
     }, error => console.error(error));
+  }
+
+  pageBoundsChanged(currentTotalPage: number) {
+    if (this.p > currentTotalPage) {
+      this.p = currentTotalPage;
+    }
+  }
+
+  pickDeletedCustomer(customer: ICustomer) {
+    console.table(customer);
+    this.deletedCustomer = customer;
+  }
+
+  delete() {
+    this.customerService.deleteCustomer(this.deletedCustomer).subscribe(() => {
+      this.customerList = this.customerList.filter((customer) => {
+        return customer.id !== this.deletedCustomer.id;
+      });
+    }, error => {
+      console.log(error);
+    });
   }
 }

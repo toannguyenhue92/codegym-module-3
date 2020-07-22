@@ -14,6 +14,8 @@ import { StaffCreateComponent } from './components/staff/staff-create/staff-crea
 import { StayCreateComponent } from './components/stay/stay-create/stay-create.component';
 import { ContractCreateComponent } from './components/contract/contract-create/contract-create.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
+import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
+import { CustomerDetailComponent } from './components/customer/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
     CustomerCreateComponent,
     StaffCreateComponent,
     StayCreateComponent,
-    ContractCreateComponent
+    ContractCreateComponent,
+    CustomerEditComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,

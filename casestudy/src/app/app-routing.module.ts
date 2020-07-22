@@ -7,13 +7,19 @@ import { StaffCreateComponent } from './components/staff/staff-create/staff-crea
 import { StayCreateComponent } from './components/stay/stay-create/stay-create.component';
 import { ContractCreateComponent } from './components/contract/contract-create/contract-create.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
+import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
+import { CustomerDetailComponent } from './components/customer/customer-detail/customer-detail.component';
 
 const routes: Routes = [{
   path: '', component: HomeComponent
 }, {
   path: 'customer', component: CustomerListComponent
 }, {
+  path: 'customer/detail/:id', component: CustomerDetailComponent
+},{
   path: 'customer/create', component: CustomerCreateComponent
+}, {
+  path: 'customer/edit/:id', component: CustomerEditComponent
 }, {
   path: 'staff/create', component: StaffCreateComponent
 }, {

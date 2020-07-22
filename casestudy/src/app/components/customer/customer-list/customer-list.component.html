@@ -1,4 +1,6 @@
-<h3>CUSTOMER LIST</h3>
+<div class="d-flex justify-content-center">
+  <h3 class="text-info mb-3">CUSTOMER LIST</h3>
+</div>
 <div class="form-group row">
   <div class="col-sm-6">
     <button type="button" class="btn btn-outline-primary" routerLink='/customer/create'>
@@ -20,7 +22,7 @@
       <th>Birth date</th>
       <th>Gender</th>
       <th>Customer type</th>
-      <th style="width: 205px;">Action</th>
+      <th style="width: 190px;">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -30,13 +32,34 @@
       <td>{{c.gender}}</td>
       <td>{{c.customerType}}</td>
       <td>
-        <button class="btn btn-sm btn-outline-success" style="margin-right: 15px;">View</button>
-        <button class="btn btn-sm btn-outline-warning" style="margin-right: 15px;">Edit</button>
-        <button class="btn btn-sm btn-outline-danger">Delete</button>
+        <a class="btn btn-sm btn-outline-success mr-2" [routerLink]="['/customer/detail/',c.id]">View</a>
+        <a class="btn btn-sm btn-outline-warning mr-2" [routerLink]="['/customer/edit/',c.id]">Edit</a>
+        <button class="btn btn-sm btn-outline-danger" (click)="pickDeletedCustomer(c)" data-toggle="modal"
+          data-target="#modal">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
 <div class="d-flex justify-content-center">
-  <pagination-controls (pageChange)="p = $event" (pageBoundsCorrection)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="p = $event" (pageBoundsCorrection)="pageBoundsChanged($event)">
+  </pagination-controls>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Confirm delete</h5>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete customer <span class="text-danger"
+          *ngIf="deletedCustomer">{{deletedCustomer.fullName}}</span>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="delete()" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
 </div>

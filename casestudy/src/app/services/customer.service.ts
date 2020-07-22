@@ -16,7 +16,19 @@ export class CustomerService {
     return this.httpClient.get<Array<ICustomer>>(this.API_URL);
   }
 
-  createNewCustomer(customer: Partial<ICustomer>): Observable<any> {
-    return this.httpClient.post(this.API_URL, customer);
+  getCustomerById(id: number): Observable<ICustomer> {
+    return this.httpClient.get<ICustomer>(`${this.API_URL}/${id}`);
+  }
+
+  createNewCustomer(customer: Partial<ICustomer>): Observable<ICustomer> {
+    return this.httpClient.post<ICustomer>(this.API_URL, customer);
+  }
+
+  updateCustomer(customer: ICustomer): Observable<ICustomer> {
+    return this.httpClient.patch<ICustomer>(`${this.API_URL}/${customer.id}`, customer);
+  }
+
+  deleteCustomer(customer: ICustomer): Observable<ICustomer> {
+    return this.httpClient.delete<ICustomer>(`${this.API_URL}/${customer.id}`);
   }
 }
