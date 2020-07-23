@@ -21,7 +21,7 @@
   <tbody>
     <tr *ngFor="let c of customerList | filter: term | paginate: { itemsPerPage: 8, currentPage: p }">
       <td>{{c.fullName}}</td>
-      <td>{{c.birthDate}}</td>
+      <td>{{c.birthDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{c.gender}}</td>
       <td>{{c.customerType}}</td>
       <td>

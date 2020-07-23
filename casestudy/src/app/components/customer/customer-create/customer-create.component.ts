@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { ICustomer } from 'src/app/models/ICustomer';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { CustomerValidator } from 'src/app/validators/CustomerCodeValidator';
 
 @Component({
   selector: 'app-customer-create',
@@ -12,6 +15,7 @@ import { ICustomer } from 'src/app/models/ICustomer';
 export class CustomerCreateComponent implements OnInit {
 
   customerCreateForm: FormGroup;
+  isDuplicatedCode: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +34,18 @@ export class CustomerCreateComponent implements OnInit {
       customerType: ['Unknown', [Validators.required]],
       address: ['', [Validators.required]]
     });
+    // this.customerCreateForm.patchValue({
+    //   customerCode: 'KH-',
+    //   fullName: 'Toan Nguyen',
+    //   birthDate: '1992-04-24',
+    //   gender: 'Male',
+    //   identifier: '123456789',
+    //   telephone: '0909123456',
+    //   email: 'toannguyen.hue92@gmail.com',
+    //   customerType: 'Gold',
+    //   address: 'Hue'
+    // });
+    this.customerCode.setAsyncValidators(CustomerValidator.codeValidator(this.customerService));
   }
 
   get customerCode() {
@@ -69,16 +85,16 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   createNewCustomer() {
-    if (this.customerCreateForm.valid) {
-      const customer: ICustomer = this.customerCreateForm.value;
-      this.customerService.createNewCustomer(customer).subscribe(value => {
-        console.log(value);
-      }, error => {
-        console.log(error);
-      }, () => {
-        console.log('Customer created!');
-        this.router.navigateByUrl('/customer');
-      });
+    if (this.customerCreateForm.invalid) {
+      this.customerService.createNewCustomer(this.customerCreateForm.value)
+        .subscribe(c => {
+          console.log(c);
+        }, error => {
+          console.log(error);
+        }, () => {
+          console.log('Customer created!');
+          this.router.navigateByUrl('/customer');
+        });
     }
   }
 

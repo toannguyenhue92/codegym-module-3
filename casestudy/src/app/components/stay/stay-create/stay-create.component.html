@@ -1,75 +1,90 @@
+<h3 class="alert alert-info">Create new stay service</h3>
 <div class="my-form">
-  <h3 style="width: 100%; text-align: center; margin-bottom: 25px;">Add new stay</h3>
-  <form>
+  <form [formGroup]="stayServiceCreateForm" (ngSubmit)="createStayService()">
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Stay service code</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="stayServiceCode">
+        <div class="text-danger mt-2" *ngIf="stayServiceCode.hasError('required') && stayServiceCode.touched">
+          This filed is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="stayServiceCode.hasError('pattern') && stayServiceCode.touched">
+          Customer code format: DV-XXXX
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Stay service type</label>
       <div class="col-sm-8">
-        <select class="custom-select">
-          <option selected>Select stay service type</option>
-          <option value="1">Room</option>
-          <option value="2">House</option>
-          <option value="3">Villa</option>
+        <select class="custom-select" formControlName="stayServiceType">
+          <option value="Unknown" selected>Select stay service type</option>
+          <option value="Room">Room</option>
+          <option value="House">House</option>
+          <option value="Villa">Villa</option>
         </select>
+        <div class="text-danger mt-2" *ngIf="stayServiceType.hasError('required') && stayServiceType.touched">
+          This filed is required!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Area</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="area">
+        <div class="text-danger mt-2" *ngIf="area.hasError('required') && area.touched">
+          This filed is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="area.hasError('min') && area.touched">
+          Area is greater than 50
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Rental Cost</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="rentalCost">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Max guest</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="maxGuest">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Rental type</label>
       <div class="col-sm-8">
-        <select class="custom-select">
-          <option selected>Select rental type</option>
-          <option value="1">Hours</option>
-          <option value="2">Days</option>
-          <option value="3">Months</option>
-          <option value="4">Years</option>
+        <select class="custom-select" formControlName="rentalType">
+          <option value="Unknown" selected>Select rental type</option>
+          <option value="Hours">Hours</option>
+          <option value="Days">Days</option>
+          <option value="Months">Months</option>
+          <option value="Years">Years</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Standard</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="standard">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Description</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="description">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Number of floors</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="numberOfFloors">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Pool's area</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="poolArea">
       </div>
     </div>
     <div class="form-group row">
