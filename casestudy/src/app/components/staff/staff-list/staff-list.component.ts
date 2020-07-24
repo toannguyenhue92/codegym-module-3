@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IStaff } from 'src/app/models/IStaff';
+import { StaffService } from 'src/app/services/staff.service';
 
 @Component({
   selector: 'app-staff-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffListComponent implements OnInit {
 
-  constructor() { }
+  staffs = new Array<IStaff>();
+
+  constructor(private staffService: StaffService) { }
 
   ngOnInit() {
+    this.staffService.getAllStaffs().subscribe(value => (this.staffs = value));
   }
 
 }

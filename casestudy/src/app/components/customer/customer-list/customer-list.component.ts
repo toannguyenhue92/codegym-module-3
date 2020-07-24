@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICustomer } from 'src/app/models/ICustomer';
 import { CustomerService } from 'src/app/services/customer.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer-list',
@@ -9,15 +10,14 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerListComponent implements OnInit {
 
-  customerList: Array<ICustomer>;
-  term: string;
+  customerList = new Array<ICustomer>();
   p: number;
+  term: string;
   deletedCustomer: ICustomer;
 
   constructor(
-    private customerService: CustomerService) {
-    this.p = 1;
-    this.customerList = new Array<ICustomer>();
+    private customerService: CustomerService,
+    private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -42,8 +42,10 @@ export class CustomerListComponent implements OnInit {
       this.customerList = this.customerList.filter((customer) => {
         return customer.id !== this.deletedCustomer.id;
       });
+      this.toastr.success(`${this.deletedCustomer.fullName} was removed!`);
     }, error => {
       console.log(error);
     });
   }
+
 }

@@ -5,7 +5,7 @@ export interface IStaff {
   birthDate: string;
   gender: string;
   identifierNumber: string;
-  telephoneNumber: string;
+  telephone: string;
   email: string;
   educationDegree: string;
   position: string;
