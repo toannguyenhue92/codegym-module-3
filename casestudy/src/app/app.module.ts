@@ -7,6 +7,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +28,6 @@ import { StaffDetailComponent } from './components/staff/staff-detail/staff-deta
 import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ContractCreateComponent } from './components/contract/contract-create/contract-create.component';
 import { ContractEditComponent } from './components/contract/contract-edit/contract-edit.component';
-import { ContractDetailComponent } from './components/contract/contract-detail/contract-detail.component';
 
 @NgModule({
   declarations: [
@@ -48,8 +48,7 @@ import { ContractDetailComponent } from './components/contract/contract-detail/c
     StaffEditComponent,
     StaffDetailComponent,
     ContractListComponent,
-    ContractEditComponent,
-    ContractDetailComponent
+    ContractEditComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +62,9 @@ import { ContractDetailComponent } from './components/contract/contract-detail/c
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    })
+      preventDuplicates: false,
+    }),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

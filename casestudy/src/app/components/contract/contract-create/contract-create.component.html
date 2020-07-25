@@ -5,42 +5,80 @@
       <label class="col-sm-4 col-form-label">Stay service code</label>
       <div class="col-sm-8">
         <input type="text" class="form-control" formControlName="stayServiceCode">
+        <div class="text-danger mt-2" *ngIf="stayServiceCode.hasError('required') && stayServiceCode.touched">
+          This field is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="stayServiceCode.hasError('notExist') && stayServiceCode.touched">
+          Stay code {{stayServiceCode.value}} is not exist!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Customer code</label>
       <div class="col-sm-8">
         <input type="text" class="form-control" formControlName="customerCode">
+        <div class="text-danger mt-2" *ngIf="customerCode.hasError('required') && customerCode.touched">
+          This field is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="customerCode.hasError('notExist') && customerCode.touched">
+          Customer code {{customerCode.value}} is not exist!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Check-in date</label>
       <div class="col-sm-8">
         <input type="date" class="form-control" formControlName="checkInDate">
+        <div class="text-danger mt-2" *ngIf="checkInDate.hasError('required') && checkInDate.touched">
+          This field is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="checkInDate.hasError('badCheckInDate') && checkInDate.touched">
+          Check-in date must be later than today!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Check-out date</label>
       <div class="col-sm-8">
         <input type="date" class="form-control" formControlName="checkOutDate">
+        <div class="text-danger mt-2" *ngIf="checkOutDate.hasError('required') && checkOutDate.touched">
+          This field is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="contractCreateForm.hasError('badCheckOutDate') && checkOutDate.touched">
+          Check-out date must be later than check-in date!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Deposit</label>
       <div class="col-sm-8">
         <input type="number" class="form-control" formControlName="deposit">
+        <div class="text-danger mt-2" *ngIf="deposit.hasError('required') && deposit.touched">
+          This field is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="deposit.hasError('min') && deposit.touched">
+          Minimum is $0
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-4 col-form-label">Total cost</label>
       <div class="col-sm-8">
         <input type="number" class="form-control" formControlName="totalCost">
+        <div class="text-danger mt-2" *ngIf="totalCost.hasError('required') && totalCost.touched">
+          This field is required!
+        </div>
+        <div class="text-danger mt-2" *ngIf="totalCost.hasError('min') && totalCost.touched">
+          Minimum is $0
+        </div>
       </div>
     </div>
     <div class="form-group row mt-4">
       <label class="col-sm-4 col-form-label"></label>
-      <div class="col-sm-8">
-        <input type="submit" class="btn btn-primary form-control" value="Submit">
+      <div class="col-sm-8 d-flex justify-content-end">
+        <input type="button" class="btn btn-primary mr-3" value="Calculate total cost" (click)="calculateTotalCost()"
+          [disabled]="contractCreateForm.hasError('badCheckOutDate') || stayServiceCode.hasError() || checkInDate.hasError() || checkOutDate.hasError()">
+        <input type="submit" class="btn btn-primary" value="Submit" [disabled]="contractCreateForm.invalid">
       </div>
     </div>
   </form>

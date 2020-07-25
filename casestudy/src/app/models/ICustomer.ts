@@ -5,7 +5,7 @@ export interface ICustomer {
   birthDate: string;
   gender: boolean;
   identifierNumber: string;
-  telephoneNumber: string;
+  telephone: string;
   email: string;
   customerType: string;
   address: string;

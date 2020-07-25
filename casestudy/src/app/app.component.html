@@ -1,23 +1,23 @@
 <div class="container-fluid px-0">
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand bg-dark navbar-dark">
     <a class="navbar-brand">Furama Đà Nẵng</a>
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/customer"><i class="fas fa-address-card pr-1"></i>Customer</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/staff"><i class="fas fa-users pr-1"></i>Staff</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/stay"><i class="fas fa-bookmark pr-1"></i>Stay</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/contract"><i class="fas fa-file-signature pr-1"></i>Contract</a>
       </li>
     </ul>
   </nav>
   <div class="row px-0 pt-3 mx-0">
-    <div class="container">
+    <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
   </div>

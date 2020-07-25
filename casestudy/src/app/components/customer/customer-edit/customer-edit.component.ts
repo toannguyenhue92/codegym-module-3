@@ -23,7 +23,7 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit() {
     this.customerEditForm = this.formBuilder.group({
-      customerCode: ['', [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]],
+      customerCode: { value: null, disabled: true },
       fullName: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
       gender: ['', [Validators.required]],

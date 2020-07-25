@@ -17,7 +17,6 @@ import { StaffDetailComponent } from './components/staff/staff-detail/staff-deta
 import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ContractCreateComponent } from './components/contract/contract-create/contract-create.component';
 import { ContractEditComponent } from './components/contract/contract-edit/contract-edit.component';
-import { ContractDetailComponent } from './components/contract/contract-detail/contract-detail.component';
 
 const routes: Routes = [{
   path: '', component: HomeComponent
@@ -47,8 +46,6 @@ const routes: Routes = [{
   path: 'stay/edit/:id', component: StayEditComponent
 }, {
   path: 'contract', component: ContractListComponent
-}, {
-  path: 'contract/detail/:id', component: ContractDetailComponent
 }, {
   path: 'contract/create', component: ContractCreateComponent
 }, {

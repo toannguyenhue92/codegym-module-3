@@ -5,7 +5,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { ICustomer } from 'src/app/models/ICustomer';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CustomerValidator } from 'src/app/validators/CustomerCodeValidator';
+import { CustomerValidator } from 'src/app/validators/CustomerValidator';
 
 @Component({
   selector: 'app-customer-create',
@@ -24,7 +24,8 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.customerCreateForm = this.formBuilder.group({
-      customerCode: ['', [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]],
+      customerCode: ['', [Validators.required, Validators.pattern('^KH-[0-9]{4}$')],
+        [CustomerValidator.codeExist(this.customerService)]],
       fullName: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
       gender: ['Unknown', [Validators.required]],
@@ -34,18 +35,6 @@ export class CustomerCreateComponent implements OnInit {
       customerType: ['Unknown', [Validators.required]],
       address: ['', [Validators.required]]
     });
-    // this.customerCreateForm.patchValue({
-    //   customerCode: 'KH-',
-    //   fullName: 'Toan Nguyen',
-    //   birthDate: '1992-04-24',
-    //   gender: 'Male',
-    //   identifier: '123456789',
-    //   telephone: '0909123456',
-    //   email: 'toannguyen.hue92@gmail.com',
-    //   customerType: 'Gold',
-    //   address: 'Hue'
-    // });
-    this.customerCode.setAsyncValidators(CustomerValidator.codeValidator(this.customerService));
   }
 
   get customerCode() {

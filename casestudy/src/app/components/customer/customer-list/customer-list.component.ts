@@ -38,14 +38,10 @@ export class CustomerListComponent implements OnInit {
   }
 
   delete() {
-    this.customerService.deleteCustomer(this.deletedCustomer).subscribe(() => {
-      this.customerList = this.customerList.filter((customer) => {
-        return customer.id !== this.deletedCustomer.id;
-      });
-      this.toastr.success(`${this.deletedCustomer.fullName} was removed!`);
-    }, error => {
-      console.log(error);
+    this.customerList = this.customerList.filter((customer) => {
+      return customer.id !== this.deletedCustomer.id;
     });
+    this.toastr.success(`${this.deletedCustomer.fullName} was removed!`);
   }
 
 }

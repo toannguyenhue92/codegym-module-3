@@ -1,34 +1,116 @@
 <div class="form-group row">
-  <div class="col-sm-8">
+  <div class="col-auto">
     <button type="button" class="btn btn-outline-primary" routerLink='/contract/create'>
       Add new contract
     </button>
   </div>
-  <div class="col-sm-4 d-flex justify-content-end">
-    <input type="text" class="form-control" placeholder="Search anything">
+  <div class="col-auto px-0">
+    <input type="text" class="form-control" placeholder="Search anything" [(ngModel)]="term">
   </div>
 </div>
 <table class="table table-bordered table-striped mb-5">
   <thead class="thead-dark">
     <tr>
-      <th>Stay Service Code</th>
-      <th>Customer Code</th>
-      <th>Check-in Date</th>
-      <th>Check-out Date</th>
-      <th style="width: 190px;">Action</th>
+      <th class="text-center">Customer</th>
+      <th class="text-center">Stay service type</th>
+      <th class="text-center">Check-in Date</th>
+      <th class="text-center">Check-out Date</th>
+      <th class="text-center" style="width: 190px;">Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let c of contracts">
-      <td>{{c.stayServiceCode}}</td>
-      <td>{{c.customerCode}}</td>
-      <td>{{c.checkInDate}}</td>
-      <td>{{c.checkOutDate}}</td>
+    <tr *ngFor="let c of contracts | filter: term | paginate: { itemsPerPage: 6, currentPage: p }">
+      <td>{{c.customer.fullName}}</td>
+      <td class="text-center">{{c.stay.stayServiceType}}</td>
+      <td class="text-center">{{c.checkInDate| date: 'dd/MM/yyyy'}}</td>
+      <td class="text-center">{{c.checkOutDate| date: 'dd/MM/yyyy'}}</td>
       <td>
-        <button class="btn btn-sm btn-outline-success mr-2">View</button>
-        <button class="btn btn-sm btn-outline-warning mr-2">Edit</button>
-        <button class="btn btn-sm btn-outline-danger">Delete</button>
+        <button class="btn btn-sm btn-outline-success mr-2" (click)="pickContract(c)" data-toggle="modal"
+          data-target="#contractDetailDialog">View</button>
+        <button class="btn btn-sm btn-outline-warning mr-2" [routerLink]="['/contract/edit',c.id]">Edit</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="chooseDeletedContract(c)" data-toggle="modal"
+          data-target="#staticBackdrop">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
+<div class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="p = $event" (pageBoundsCorrection)="pageBoundsChanged($event)">
+  </pagination-controls>
+</div>
+
+<!-- Delete -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm your action</h5>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete this contract?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteContract()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Detail -->
+<div class="modal fade" id="contractDetailDialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" aria-labelledby="contractDetailLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info" id="contractDetailLabel">Contract details</h5>
+      </div>
+      <div class="modal-body">
+        <table *ngIf="pickedContract" class="table table-borderless table-striped">
+          <tbody>
+            <tr>
+              <td class="font-italic">Customer's code :</td>
+              <td>{{pickedContract.customer.customerCode}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Customer's name :</td>
+              <td>{{pickedContract.customer.fullName}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Customer's type :</td>
+              <td>{{pickedContract.customer.customerType}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Stay service code :</td>
+              <td>{{pickedContract.stay.stayServiceCode}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Stay service type :</td>
+              <td>{{pickedContract.stay.stayServiceType}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Check-in date :</td>
+              <td>{{pickedContract.checkInDate | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Check-out date :</td>
+              <td>{{pickedContract.checkOutDate | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Deposit :</td>
+              <td>{{pickedContract.deposit | currency}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Total cost :</td>
+              <td>{{pickedContract.totalCost | currency}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
