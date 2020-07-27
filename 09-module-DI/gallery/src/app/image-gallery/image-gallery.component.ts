@@ -24,7 +24,7 @@ export class ImageGalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.itemWidth = (100 / this.config) - 5;
+    this.itemWidth = 100 / this.config;
   }
 
 }
